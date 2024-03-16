@@ -1,0 +1,20 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	margin: 5rem 0rem 5rem 0rem;
+	background-color: #ccc;
+	color: black;
+	max-width: 60rem;
+	width: 65%;
+	padding: 1rem;
+	border-radius: 1rem;
+}
+
+.logo {
+	width: 6rem;
+}
