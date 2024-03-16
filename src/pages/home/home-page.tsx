@@ -10,7 +10,6 @@ export function HomePage() {
 		queryFn: getPokemonList,
 		staleTime: Infinity,
 	});
-	console.log(data);
 	if (isLoading || isError) return <Spinner />;
 	return (
 		<div className={styles.container}>
