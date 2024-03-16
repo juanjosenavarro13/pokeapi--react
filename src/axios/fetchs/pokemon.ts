@@ -8,13 +8,20 @@ export interface PokemonResponse {
 	results: { name: string; url: string }[];
 }
 
-export async function getPokemonsList() {
+export async function getPokemonList() {
 	const PokemonList = await axios.get<PokemonResponse>(HTTP_ENDPOINTS.Pokemon);
 	const PokemonListDetailPromises = PokemonList.data.results.map((Pokemon) =>
-		getPokemonDetail(Pokemon.url),
+		getPokemonDetail(Pokemon.url).catch((error) => {
+			console.error(
+				`Failed to fetch details for ${Pokemon.name}: ${error.message}`,
+			);
+			return null;
+		}),
 	);
 
-	const PokemonListDetail = await Promise.all(PokemonListDetailPromises);
+	const PokemonListDetail = (
+		await Promise.all(PokemonListDetailPromises)
+	).filter((Pokemon) => Pokemon !== null);
 	const { count, next, previous } = PokemonList.data;
 
 	return { count, next, previous, result: PokemonListDetail };
