@@ -7,5 +7,9 @@ export function PokemonDetailPage() {
 	const url = HTTP_ENDPOINTS.Pokemon + "/" + params.id + "/";
 	const { data } = usePokemonDetail(url);
 	console.log(data);
-	return <>pokemon detail</>;
+	return (
+		<div>
+			<img src={data?.sprites.front_default} alt={`pokemon ${data?.name}`} />
+		</div>
+	);
 }
