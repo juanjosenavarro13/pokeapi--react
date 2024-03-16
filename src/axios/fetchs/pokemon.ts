@@ -24,13 +24,19 @@ export async function getPokemonList() {
 	).filter((Pokemon) => Pokemon !== null);
 	const { count, next, previous } = PokemonList.data;
 
-	return { count, next, previous, result: PokemonListDetail };
+	if (PokemonListDetail.length === 0)
+		throw new Error("error no one info Pokemon");
+
+	return { count, next, previous, results: PokemonListDetail };
 }
 
-interface PokemonDetail {
+export interface PokemonDetail {
 	id: number;
 	name: string;
 	height: number;
+	sprites: {
+		front_default: string;
+	};
 }
 
 async function getPokemonDetail(url: string) {
