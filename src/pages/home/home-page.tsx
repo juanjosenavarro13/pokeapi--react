@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPokemonList } from "../../axios/fetchs/pokemon";
+import { getPokemonList } from "../../shared/fetchs/pokemon";
 import { Spinner } from "../../shared/components/spinner/spinner";
 import styles from "./home-page.module.css";
 import { PokemonCard } from "./components/pokemon-card";
