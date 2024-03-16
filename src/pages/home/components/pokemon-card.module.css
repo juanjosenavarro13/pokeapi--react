@@ -3,7 +3,8 @@
 	border-radius: 1rem;
 	margin: 0.5rem;
 	width: 100%;
-	max-width: 10rem;
+	width: 9rem;
+	height: 9rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -18,7 +19,10 @@
 	}
 }
 
-.container:hover {
+.containerHover:hover {
 	background-color: #ddd;
+}
+
+.pointer:hover {
 	cursor: pointer;
 }

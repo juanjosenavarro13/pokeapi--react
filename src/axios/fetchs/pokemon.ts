@@ -9,25 +9,7 @@ export interface PokemonResponse {
 }
 
 export async function getPokemonList() {
-	const PokemonList = await axios.get<PokemonResponse>(HTTP_ENDPOINTS.Pokemon);
-	const PokemonListDetailPromises = PokemonList.data.results.map((Pokemon) =>
-		getPokemonDetail(Pokemon.url).catch((error) => {
-			console.error(
-				`Failed to fetch details for ${Pokemon.name}: ${error.message}`,
-			);
-			return null;
-		}),
-	);
-
-	const PokemonListDetail = (
-		await Promise.all(PokemonListDetailPromises)
-	).filter((Pokemon) => Pokemon !== null);
-	const { count, next, previous } = PokemonList.data;
-
-	if (PokemonListDetail.length === 0)
-		throw new Error("error no one info Pokemon");
-
-	return { count, next, previous, results: PokemonListDetail };
+	return await axios.get<PokemonResponse>(HTTP_ENDPOINTS.Pokemon);
 }
 
 export interface PokemonDetail {
@@ -39,7 +21,7 @@ export interface PokemonDetail {
 	};
 }
 
-async function getPokemonDetail(url: string) {
+export async function getPokemonDetail(url: string) {
 	const response = await axios.get<PokemonDetail>(url);
 	return response.data;
 }

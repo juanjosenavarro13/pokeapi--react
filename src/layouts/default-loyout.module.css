@@ -3,6 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-bottom: 5rem;
 }
 
 .container {
@@ -14,9 +15,10 @@
 	border-radius: 1rem;
 	display: flex;
 	justify-content: center;
-	min-height: 20rem;
+	min-height: 40.5rem;
 }
 
 .logo {
 	width: 6rem;
+	height: 6rem;
 }
