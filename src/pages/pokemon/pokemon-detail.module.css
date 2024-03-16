@@ -5,4 +5,9 @@
 	align-items: center;
 	border: 0.1rem solid #2a4c76;
 	border-radius: 1rem;
+
+	img {
+		width: 6rem;
+		height: 6rem;
+	}
 }

@@ -19,6 +19,15 @@ export interface PokemonDetail {
 	sprites: {
 		front_default: string;
 	};
+	types: PokemonType[];
+}
+
+export interface PokemonType {
+	slot: number;
+	type: {
+		name: string;
+		url: string;
+	};
 }
 
 export async function getPokemonDetail(url: string) {

@@ -1,7 +1,8 @@
 import { redirect, useParams } from "react-router-dom";
-import { usePokemonDetail } from "../../shared/hooks/usePokemonDetail";
-import { HTTP_ENDPOINTS } from "../../shared/constants/http-endpoints";
+import { NamePokemonColor } from "../../shared/components/name-pokemon-color/name-pokemon-color";
 import { Spinner } from "../../shared/components/spinner/spinner";
+import { HTTP_ENDPOINTS } from "../../shared/constants/http-endpoints";
+import { usePokemonDetail } from "../../shared/hooks/usePokemonDetail";
 import styles from "./pokemon-detail.module.css";
 
 export function PokemonDetailPage() {
@@ -10,7 +11,7 @@ export function PokemonDetailPage() {
 	const { data, isError, isLoading } = usePokemonDetail(url);
 
 	if (isError) redirect("/");
-	if (isLoading) return <Spinner />;
+	if (isLoading || !data) return <Spinner />;
 
 	return (
 		<div>
@@ -20,7 +21,7 @@ export function PokemonDetailPage() {
 					alt={`pokemon ${data?.name}`}
 					loading="lazy"
 				/>
-				<h2>{data?.name}</h2>
+				<NamePokemonColor name={data.name} types={data.types} />
 			</div>
 		</div>
 	);

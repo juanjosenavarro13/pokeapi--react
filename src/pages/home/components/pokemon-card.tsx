@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { Spinner } from "../../../shared/components/spinner/spinner";
 import { usePokemonDetail } from "../../../shared/hooks/usePokemonDetail";
 import styles from "./pokemon-card.module.css";
+import { NamePokemonColor } from "../../../shared/components/name-pokemon-color/name-pokemon-color";
 interface Props {
 	url: string;
 }
 export function PokemonCard(props: Readonly<Props>) {
 	const { data, isLoading, isError } = usePokemonDetail(props.url);
-	if (isLoading || isError)
+	const loading = isLoading || isError || !data;
+	if (loading)
 		return (
 			<div className={styles.container}>
 				<Spinner />
@@ -23,7 +25,7 @@ export function PokemonCard(props: Readonly<Props>) {
 				alt={`imagen del pokemon ${data?.name}`}
 				loading="lazy"
 			/>
-			<h2>{data?.name}</h2>
+			<NamePokemonColor name={data.name} types={data.types} />
 		</Link>
 	);
 }

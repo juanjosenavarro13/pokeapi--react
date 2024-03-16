@@ -10,12 +10,7 @@ export function HomePage() {
 		queryFn: getPokemonList,
 		staleTime: Infinity,
 	});
-	if (isLoading || isError)
-		return (
-			<div className={styles.container}>
-				<Spinner />
-			</div>
-		);
+	if (isLoading || isError) return <Spinner />;
 	return (
 		<div className={styles.container}>
 			{data?.data.results.map((Pokemon) => (
