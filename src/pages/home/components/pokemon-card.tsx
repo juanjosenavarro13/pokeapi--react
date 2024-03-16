@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Spinner } from "../../../shared/components/spinner/spinner";
 import { usePokemonDetail } from "../../../shared/hooks/usePokemonDetail";
 import styles from "./pokemon-card.module.css";
@@ -13,14 +14,15 @@ export function PokemonCard(props: Readonly<Props>) {
 			</div>
 		);
 	return (
-		<div
-			className={`${styles.container} ${styles.pointer} ${styles.containerHover}`}
+		<Link
+			to={`/pokemon/${data?.id}`}
+			className={`${styles.container} ${styles.pointer} ${styles.containerHover} ${styles.black}`}
 		>
 			<img
 				src={data?.sprites.front_default}
 				alt={`imagen del pokemon ${data?.name}`}
 			/>
 			<h2>{data?.name}</h2>
-		</div>
+		</Link>
 	);
 }

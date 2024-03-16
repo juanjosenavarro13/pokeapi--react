@@ -5,5 +5,6 @@ export function usePokemonDetail(url: string) {
 	return useQuery({
 		queryKey: ["PokemonDetail", url],
 		queryFn: () => getPokemonDetail(url),
+		staleTime: Infinity,
 	});
 }

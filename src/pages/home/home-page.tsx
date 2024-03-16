@@ -8,6 +8,7 @@ export function HomePage() {
 	const { data, isError, isLoading } = useQuery({
 		queryKey: ["PokemonList"],
 		queryFn: getPokemonList,
+		staleTime: Infinity,
 	});
 	console.log(data);
 	if (isLoading || isError) return <Spinner />;

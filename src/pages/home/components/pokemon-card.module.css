@@ -9,6 +9,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-decoration: none;
 	img {
 		width: 5rem;
 		height: 5rem;
@@ -25,4 +26,8 @@
 
 .pointer:hover {
 	cursor: pointer;
+}
+
+.black {
+	color: black;
 }
