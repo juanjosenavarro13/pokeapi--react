@@ -11,6 +11,9 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	--primary-color: #eecd26;
+	--secondary-color: #2a4c76;
 }
 
 body {

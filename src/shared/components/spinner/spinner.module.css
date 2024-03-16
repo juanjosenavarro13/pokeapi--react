@@ -1,8 +1,8 @@
 .loader {
 	width: 3rem;
 	height: 3rem;
-	border: 0.4rem solid #2a4c76;
-	border-bottom-color: #eecd26;
+	border: 0.4rem solid var(--secondary-color);
+	border-bottom-color: var(--primary-color);
 	border-radius: 50%;
 	display: inline-block;
 	box-sizing: border-box;

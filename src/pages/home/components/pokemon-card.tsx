@@ -21,6 +21,7 @@ export function PokemonCard(props: Readonly<Props>) {
 			<img
 				src={data?.sprites.front_default}
 				alt={`imagen del pokemon ${data?.name}`}
+				loading="lazy"
 			/>
 			<h2>{data?.name}</h2>
 		</Link>
