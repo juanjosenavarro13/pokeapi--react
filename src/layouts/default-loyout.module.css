@@ -13,6 +13,9 @@
 	width: 65%;
 	padding: 1rem;
 	border-radius: 1rem;
+	display: flex;
+	justify-content: center;
+	min-height: 20rem;
 }
 
 .logo {
