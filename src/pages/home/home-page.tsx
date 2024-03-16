@@ -1,20 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPokemons } from "../../axios/fetchs/pokemon";
 import { Spinner } from "../../shared/components/spinner/spinner";
+import { getPokemonsList } from "../../axios/fetchs/pokemon";
 
 export function HomePage() {
 	const { data, isError, isLoading } = useQuery({
 		queryKey: ["pokemons"],
-		queryFn: getPokemons,
+		queryFn: getPokemonsList,
 	});
 	console.log(data);
-	if (isError) return null;
-	if (isLoading) return <Spinner />;
+	if (isLoading || isError) return <Spinner />;
 	return (
 		<div>
-			{data?.data.results.map((pokemon) => (
-				<p key={pokemon.url}>{pokemon.name}</p>
-			))}
+			{data?.result.map((Pokemon) => <p key={Pokemon.id}>{Pokemon.name}</p>)}
 		</div>
 	);
 }

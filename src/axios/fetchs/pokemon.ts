@@ -5,14 +5,28 @@ export interface PokemonResponse {
 	count: number;
 	next: string | null;
 	previous: string | null;
-	results: Result[];
+	results: { name: string; url: string }[];
 }
 
-interface Result {
+export async function getPokemonsList() {
+	const PokemonList = await axios.get<PokemonResponse>(HTTP_ENDPOINTS.Pokemon);
+	const PokemonListDetailPromises = PokemonList.data.results.map((Pokemon) =>
+		getPokemonDetail(Pokemon.url),
+	);
+
+	const PokemonListDetail = await Promise.all(PokemonListDetailPromises);
+	const { count, next, previous } = PokemonList.data;
+
+	return { count, next, previous, result: PokemonListDetail };
+}
+
+interface PokemonDetail {
+	id: number;
 	name: string;
-	url: string;
+	height: number;
 }
 
-export function getPokemons() {
-	return axios.get<PokemonResponse>(HTTP_ENDPOINTS.pokemon);
+async function getPokemonDetail(url: string) {
+	const response = await axios.get<PokemonDetail>(url);
+	return response.data;
 }
