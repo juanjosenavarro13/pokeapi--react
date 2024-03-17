@@ -6,6 +6,7 @@ import { HTTP_ENDPOINTS } from "../../shared/constants/http-endpoints";
 import { usePokemonDetail } from "../../shared/hooks/usePokemonDetail";
 import { ModalImg } from "./components/modal-img/modal-img";
 import styles from "./pokemon-detail.module.css";
+import { AcordionGroup } from "./components/acordion-group/acordion-group";
 
 export function PokemonDetailPage() {
 	const params = useParams();
@@ -17,7 +18,7 @@ export function PokemonDetailPage() {
 	if (isLoading || !data) return <Spinner />;
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<div className={styles.containerImg}>
 				<button
 					onClick={() => {
@@ -31,6 +32,9 @@ export function PokemonDetailPage() {
 					/>
 				</button>
 				<NamePokemonColor name={data.name} types={data.types} />
+			</div>
+			<div>
+				<AcordionGroup />
 			</div>
 			<ModalImg
 				isOpen={modalImg}
