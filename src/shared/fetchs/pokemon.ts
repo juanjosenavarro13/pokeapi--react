@@ -8,8 +8,15 @@ export interface PokemonResponse {
 	results: { name: string; url: string }[];
 }
 
-export async function getPokemonList() {
-	return await axios.get<PokemonResponse>(HTTP_ENDPOINTS.Pokemon);
+export async function getPokemonList(page: number) {
+	const limit = 20;
+	const offset = 20;
+	return await axios.get<PokemonResponse>(
+		HTTP_ENDPOINTS.PokemonList.replace(
+			"{{offset}}",
+			(page * offset - limit).toString(),
+		).replace("{{limit}}", limit.toString()),
+	);
 }
 
 export interface PokemonDetail {

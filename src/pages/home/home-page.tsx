@@ -3,11 +3,14 @@ import { getPokemonList } from "../../shared/fetchs/pokemon";
 import { Spinner } from "../../shared/components/spinner/spinner";
 import styles from "./home-page.module.css";
 import { PokemonCard } from "./components/pokemon-card/pokemon-card";
+import { Paginate } from "./components/paginate/paginate";
+import { useState } from "react";
 
 export function HomePage() {
+	const [page, setPage] = useState<number>(1);
 	const { data, isError, isLoading } = useQuery({
-		queryKey: ["PokemonList"],
-		queryFn: getPokemonList,
+		queryKey: ["PokemonList", page],
+		queryFn: () => getPokemonList(page),
 		staleTime: Infinity,
 	});
 	if (isLoading || isError) return <Spinner />;
@@ -16,6 +19,20 @@ export function HomePage() {
 			{data?.data.results.map((Pokemon) => (
 				<PokemonCard key={Pokemon.url} url={Pokemon.url} />
 			))}
+			{data && (
+				<Paginate
+					next={data?.data.next}
+					previous={data?.data.previous}
+					nextPage={() => {
+						console.log(page);
+						setPage((prev) => prev + 1);
+					}}
+					previousPage={() => {
+						console.log(page);
+						setPage((prev) => prev - 1);
+					}}
+				/>
+			)}
 		</div>
 	);
 }
