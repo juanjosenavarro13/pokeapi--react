@@ -16,12 +16,20 @@ export interface PokemonDetail {
 	id: number;
 	name: string;
 	height: number;
-	sprites: {
-		front_default: string;
-	};
+	sprites: PokemonSprites;
 	types: PokemonType[];
 }
 
+export interface PokemonSprites {
+	front_default: string;
+	back_default: string;
+	front_female: string;
+	back_female: string;
+	front_shiny: string;
+	back_shiny: string;
+	front_shiny_female: string;
+	back_shiny_female: string;
+}
 export interface PokemonType {
 	slot: number;
 	type: {

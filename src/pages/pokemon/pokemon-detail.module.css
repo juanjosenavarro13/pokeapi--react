@@ -1,11 +1,16 @@
 .containerImg {
 	display: flex;
+	margin-top: 0.5rem;
 	flex-direction: column;
 	width: 15rem;
 	align-items: center;
 	border: 0.1rem solid #2a4c76;
 	border-radius: 1rem;
-	background-color: transparent;
+	button {
+		cursor: pointer;
+		border: 0;
+		background-color: transparent;
+	}
 
 	img {
 		width: 6rem;

@@ -1,11 +1,11 @@
+import { useState } from "react";
 import { redirect, useParams } from "react-router-dom";
 import { NamePokemonColor } from "../../shared/components/name-pokemon-color/name-pokemon-color";
 import { Spinner } from "../../shared/components/spinner/spinner";
 import { HTTP_ENDPOINTS } from "../../shared/constants/http-endpoints";
 import { usePokemonDetail } from "../../shared/hooks/usePokemonDetail";
+import { ModalImg } from "./components/modal-img/modal-img";
 import styles from "./pokemon-detail.module.css";
-import { useState } from "react";
-import { Modal } from "../../shared/components/modal/modal";
 
 export function PokemonDetailPage() {
 	const params = useParams();
@@ -18,27 +18,27 @@ export function PokemonDetailPage() {
 
 	return (
 		<div>
-			<button
-				className={styles.containerImg}
-				onMouseEnter={() => {
-					setModalImg(true);
-				}}
-			>
-				<img
-					src={data?.sprites.front_default}
-					alt={`pokemon ${data?.name}`}
-					loading="lazy"
-				/>
+			<div className={styles.containerImg}>
+				<button
+					onClick={() => {
+						setModalImg(true);
+					}}
+				>
+					<img
+						src={data?.sprites.front_default}
+						alt={`pokemon ${data?.name}`}
+						loading="lazy"
+					/>
+				</button>
 				<NamePokemonColor name={data.name} types={data.types} />
-			</button>
-			<Modal
+			</div>
+			<ModalImg
 				isOpen={modalImg}
 				onClose={() => {
 					setModalImg(false);
 				}}
-			>
-				<p>holaaa</p>
-			</Modal>
+				sprites={data.sprites}
+			></ModalImg>
 		</div>
 	);
 }
