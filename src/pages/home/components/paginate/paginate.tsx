@@ -1,3 +1,4 @@
+import { MoveScrollTop } from "../../../../shared/utils/scrollTop";
 import styles from "./paginate.module.css";
 interface Props {
 	actualPage: number;
@@ -15,31 +16,27 @@ export function Paginate({
 }: Readonly<Props>) {
 	return (
 		<nav className={styles.nav}>
-			<ul>
-				<li>
-					<button
-						disabled={Boolean(!previous)}
-						onClick={() => {
-							previousPage();
-						}}
-					>
-						Anterior
-					</button>
-				</li>
-				<li>
-					<button>{actualPage}</button>
-				</li>
-				<li>
-					<button
-						disabled={Boolean(!next)}
-						onClick={() => {
-							nextPage();
-						}}
-					>
-						Siguiente
-					</button>
-				</li>
-			</ul>
+			<button
+				disabled={Boolean(!previous)}
+				onClick={() => {
+					MoveScrollTop();
+					previousPage();
+				}}
+			>
+				Anterior
+			</button>
+
+			<button>{actualPage}</button>
+
+			<button
+				disabled={Boolean(!next)}
+				onClick={() => {
+					MoveScrollTop();
+					nextPage();
+				}}
+			>
+				Siguiente
+			</button>
 		</nav>
 	);
 }

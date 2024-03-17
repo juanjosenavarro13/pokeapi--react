@@ -7,6 +7,7 @@ import { usePokemonDetail } from "../../shared/hooks/usePokemonDetail";
 import { ModalImg } from "./components/modal-img/modal-img";
 import styles from "./pokemon-detail.module.css";
 import { AcordionGroup } from "./components/acordion-group/acordion-group";
+import { BackButton } from "../../shared/components/back-button/back-button";
 
 export function PokemonDetailPage() {
 	const params = useParams();
@@ -36,6 +37,7 @@ export function PokemonDetailPage() {
 			<div className={styles.acordionSection}>
 				<AcordionGroup pokemon={data} />
 			</div>
+			<BackButton />
 			<ModalImg
 				isOpen={modalImg}
 				onClose={() => {

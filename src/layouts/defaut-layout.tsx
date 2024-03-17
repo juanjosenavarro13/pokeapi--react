@@ -1,18 +1,16 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import styles from "./default-loyout.module.css";
 
 export function DefaultLayout() {
 	const urlGithub = "https://github.com/juanjosenavarro13/pokeapi--react";
 	return (
 		<main className={styles.main}>
-			<Link to={"/"}>
-				<img
-					className={styles.logo}
-					src="/favicon.webp"
-					alt="logo pokeapi"
-					loading="lazy"
-				/>
-			</Link>
+			<img
+				className={styles.logo}
+				src="/favicon.webp"
+				alt="logo pokeapi"
+				loading="lazy"
+			/>
 			<div className={styles.container}>
 				<Outlet />
 			</div>

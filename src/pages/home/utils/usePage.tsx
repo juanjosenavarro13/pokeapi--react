@@ -6,13 +6,13 @@ export function usePage() {
 
 	useEffect(() => {
 		const transformNumberPage = Number(pageParam);
-		if (isNaN(transformNumberPage) || transformNumberPage < 0) {
+		if (isNaN(transformNumberPage) || transformNumberPage <= 0) {
 			removeQueryParam("page");
 		}
 	}, [pageParam]);
 
 	const transformNumberPage = Number(pageParam);
-	if (isNaN(transformNumberPage) || transformNumberPage < 0) return 1;
+	if (isNaN(transformNumberPage) || transformNumberPage <= 0) return 1;
 	return transformNumberPage;
 }
 
