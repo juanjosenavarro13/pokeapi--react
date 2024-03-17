@@ -20,6 +20,23 @@ export interface PokemonDetail {
 	sprites: PokemonSprites;
 	types: PokemonType[];
 	abilities: PokemonAbilities[];
+	stats: PokemonStats[];
+}
+
+export type typesStatsName =
+	| "hp"
+	| "speed"
+	| "attack"
+	| "defense"
+	| "special-attack"
+	| "special-defense";
+export interface PokemonStats {
+	base_stat: number;
+	effort: number;
+	stat: {
+		name: typesStatsName;
+		url: string;
+	};
 }
 
 export interface PokemonAbilities {
