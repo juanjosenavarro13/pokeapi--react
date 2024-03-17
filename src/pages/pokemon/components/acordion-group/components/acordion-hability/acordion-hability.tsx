@@ -1,6 +1,5 @@
 import { Acordion } from "../../../../../../shared/components/acordion/acordion";
 import { PokemonAbilities } from "../../../../../../shared/fetchs/pokemon";
-import { CardAbility } from "./components/card-ability/card-ability";
 
 export function AcordionHability({
 	abilities,
@@ -9,9 +8,12 @@ export function AcordionHability({
 }>) {
 	return (
 		<Acordion label="Habilidades">
-			<ul>
+			<ul style={{ textAlign: "center", listStyle: "none" }}>
 				{abilities.map((ability) => (
-					<CardAbility ability={ability.ability} key={ability.slot} />
+					<li key={ability.slot}>
+						<b>slot {ability.slot}:</b> {ability.ability.name} [
+						{ability.is_hidden ? "Visible" : "Invisible"}]
+					</li>
 				))}
 			</ul>
 		</Acordion>
