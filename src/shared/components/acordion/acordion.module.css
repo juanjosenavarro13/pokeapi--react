@@ -4,6 +4,9 @@
 	background: #ededed;
 	color: #333333;
 	text-transform: capitalize;
+	main {
+		padding: 1rem;
+	}
 }
 
 .details .summary {
@@ -19,8 +22,4 @@
 	border: 1px solid var(--primary-color);
 	background: var(--secondary-color);
 	color: #ffffff;
-}
-
-.details main {
-	padding: 1rem;
 }

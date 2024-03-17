@@ -27,6 +27,27 @@ export function HomePage() {
 
 	return (
 		<>
+			{data && (
+				<Paginate
+					actualPage={page}
+					next={data?.data.next}
+					previous={data?.data.previous}
+					nextPage={() => {
+						setPage((prev) => {
+							const newPage = prev + 1;
+							addQueryParam("page", newPage.toString());
+							return newPage;
+						});
+					}}
+					previousPage={() => {
+						setPage((prev) => {
+							const newPage = prev - 1;
+							addQueryParam("page", newPage.toString());
+							return newPage;
+						});
+					}}
+				/>
+			)}
 			<div className={styles.container}>
 				{data?.data.results.map((Pokemon) => (
 					<PokemonCard key={Pokemon.url} url={Pokemon.url} />

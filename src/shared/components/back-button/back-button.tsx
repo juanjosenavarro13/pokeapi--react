@@ -1,3 +1,5 @@
+import { Button } from "../button/button";
+
 export function BackButton() {
-	return <button onClick={() => window.history.back()}>Volver Atrás</button>;
+	return <Button label="Volver Atrás" onClick={() => window.history.back()} />;
 }
