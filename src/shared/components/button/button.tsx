@@ -3,10 +3,21 @@ interface Props {
 	label: string | number;
 	onClick?: () => void;
 	disabled?: boolean;
+	cursor?: "pointer" | "auto" | "no-drop";
 }
-export function Button({ label, onClick, disabled }: Readonly<Props>) {
+export function Button({
+	label,
+	onClick,
+	disabled,
+	cursor = "auto",
+}: Readonly<Props>) {
 	return (
-		<button className={styles.button} disabled={disabled} onClick={onClick}>
+		<button
+			style={{ cursor: cursor }}
+			className={styles.button}
+			disabled={disabled}
+			onClick={onClick}
+		>
 			{label}
 		</button>
 	);

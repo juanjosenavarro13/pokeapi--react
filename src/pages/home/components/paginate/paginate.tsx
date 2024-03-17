@@ -18,7 +18,8 @@ export function Paginate({
 	return (
 		<nav className={styles.nav}>
 			<Button
-				label="Anterior"
+				label="⇠ Anterior"
+				cursor={previous ? "pointer" : "no-drop"}
 				onClick={() => {
 					MoveScrollTop();
 					previousPage();
@@ -27,7 +28,8 @@ export function Paginate({
 			/>
 			<Button label={actualPage} />
 			<Button
-				label="Siguiente"
+				label="Siguiente ⇢"
+				cursor={next ? "pointer" : "no-drop"}
 				onClick={() => {
 					MoveScrollTop();
 					nextPage();
