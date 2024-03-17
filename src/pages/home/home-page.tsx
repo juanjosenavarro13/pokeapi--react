@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getPokemonList } from "../../shared/fetchs/pokemon";
 import { Spinner } from "../../shared/components/spinner/spinner";
 import styles from "./home-page.module.css";
-import { PokemonCard } from "./components/pokemon-card";
+import { PokemonCard } from "./components/pokemon-card/pokemon-card";
 
 export function HomePage() {
 	const { data, isError, isLoading } = useQuery({

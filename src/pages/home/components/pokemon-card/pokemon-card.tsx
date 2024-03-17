@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Spinner } from "../../../shared/components/spinner/spinner";
-import { usePokemonDetail } from "../../../shared/hooks/usePokemonDetail";
+import { Spinner } from "../../../../shared/components/spinner/spinner";
+import { usePokemonDetail } from "../../../../shared/hooks/usePokemonDetail";
 import styles from "./pokemon-card.module.css";
-import { NamePokemonColor } from "../../../shared/components/name-pokemon-color/name-pokemon-color";
+import { NamePokemonColor } from "../../../../shared/components/name-pokemon-color/name-pokemon-color";
 interface Props {
 	url: string;
 }
