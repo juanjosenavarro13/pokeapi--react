@@ -1,19 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPokemonList } from "../../shared/fetchs/pokemon";
-import { Spinner } from "../../shared/components/spinner/spinner";
-import styles from "./home-page.module.css";
-import { PokemonCard } from "./components/pokemon-card/pokemon-card";
-import { Paginate } from "./components/paginate/paginate";
 import { useState } from "react";
+import { Spinner } from "../../shared/components/spinner/spinner";
+import { LIMIT, getPokemonList } from "../../shared/fetchs/pokemon";
+import { Paginate } from "./components/paginate/paginate";
+import { PokemonCard } from "./components/pokemon-card/pokemon-card";
+import styles from "./home-page.module.css";
+import { addQueryParam, usePage } from "./utils/usePage";
 
 export function HomePage() {
-	const [page, setPage] = useState<number>(1);
+	const [page, setPage] = useState<number>(usePage());
+
 	const { data, isError, isLoading } = useQuery({
 		queryKey: ["PokemonList", page],
 		queryFn: () => getPokemonList(page),
 		staleTime: Infinity,
 	});
 	if (isLoading || isError) return <Spinner />;
+
+	if (data?.data.results.length === 0) {
+		setPage(() => {
+			const newPage = Math.ceil(data.data.count / LIMIT);
+			addQueryParam("page", newPage.toString());
+			return newPage;
+		});
+	}
+
 	return (
 		<>
 			<div className={styles.container}>
@@ -27,10 +38,18 @@ export function HomePage() {
 					next={data?.data.next}
 					previous={data?.data.previous}
 					nextPage={() => {
-						setPage((prev) => prev + 1);
+						setPage((prev) => {
+							const newPage = prev + 1;
+							addQueryParam("page", newPage.toString());
+							return newPage;
+						});
 					}}
 					previousPage={() => {
-						setPage((prev) => prev - 1);
+						setPage((prev) => {
+							const newPage = prev - 1;
+							addQueryParam("page", newPage.toString());
+							return newPage;
+						});
 					}}
 				/>
 			)}

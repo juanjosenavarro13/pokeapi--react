@@ -1,6 +1,8 @@
 import axios from "axios";
 import { HTTP_ENDPOINTS } from "../constants/http-endpoints";
 
+export const LIMIT = 20;
+export const OFFSET = 20;
 export interface PokemonResponse {
 	count: number;
 	next: string | null;
@@ -9,13 +11,11 @@ export interface PokemonResponse {
 }
 
 export async function getPokemonList(page: number) {
-	const limit = 20;
-	const offset = 20;
 	return await axios.get<PokemonResponse>(
 		HTTP_ENDPOINTS.PokemonList.replace(
 			"{{offset}}",
-			(page * offset - limit).toString(),
-		).replace("{{limit}}", limit.toString()),
+			(page * OFFSET - LIMIT).toString(),
+		).replace("{{limit}}", LIMIT.toString()),
 	);
 }
 
