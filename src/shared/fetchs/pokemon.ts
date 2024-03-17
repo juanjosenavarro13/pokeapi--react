@@ -18,6 +18,16 @@ export interface PokemonDetail {
 	height: number;
 	sprites: PokemonSprites;
 	types: PokemonType[];
+	abilities: PokemonAbilities[];
+}
+
+export interface PokemonAbilities {
+	ability: {
+		name: string;
+		url: string;
+	};
+	is_hidden: boolean;
+	slot: number;
 }
 
 export interface PokemonSprites {
@@ -40,5 +50,14 @@ export interface PokemonType {
 
 export async function getPokemonDetail(url: string) {
 	const response = await axios.get<PokemonDetail>(url);
+	return response.data;
+}
+
+export interface PokemonAbilitiesDetail {
+	name: string;
+}
+
+export async function getPokemonAbility(url: string) {
+	const response = await axios.get<PokemonAbilitiesDetail>(url);
 	return response.data;
 }

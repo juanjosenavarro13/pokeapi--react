@@ -1,19 +1,13 @@
-import { Acordion } from "../../../../shared/components/acordion/acordion";
-export function AcordionGroup() {
+import { PokemonDetail } from "../../../../shared/fetchs/pokemon";
+import { AcordionHability } from "./components/acordion-hability/acordion-hability";
+export function AcordionGroup({
+	pokemon,
+}: Readonly<{ pokemon: PokemonDetail }>) {
 	return (
 		<>
-			<Acordion label="noseque">
-				<p>hola</p>
-			</Acordion>
-			<Acordion label="noseque">
-				<p>hola</p>
-			</Acordion>
-			<Acordion label="noseque">
-				<p>hola</p>
-			</Acordion>
-			<Acordion label="noseque">
-				<p>hola</p>
-			</Acordion>
+			<AcordionHability abilities={pokemon.abilities} />
+			<AcordionHability abilities={pokemon.abilities} />
+			<AcordionHability abilities={pokemon.abilities} />
 		</>
 	);
 }

@@ -7,7 +7,7 @@ export function Acordion({ label, children }: Readonly<Props>) {
 	return (
 		<details className={styles.details}>
 			<summary className={styles.summary}>{label}</summary>
-			{children}
+			<main>{children}</main>
 		</details>
 	);
 }
