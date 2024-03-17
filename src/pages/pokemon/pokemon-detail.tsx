@@ -33,7 +33,7 @@ export function PokemonDetailPage() {
 				</button>
 				<NamePokemonColor name={data.name} types={data.types} />
 			</div>
-			<div>
+			<div className={styles.acordionSection}>
 				<AcordionGroup />
 			</div>
 			<ModalImg
