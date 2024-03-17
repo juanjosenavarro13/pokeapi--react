@@ -24,9 +24,8 @@ export function DefaultLayout() {
 						justifyContent: "center",
 					}}
 				>
-					Todos los derechos reservados ~ Juan José Navarro -{" "}
 					<a href={urlGithub} style={{ color: "white" }}>
-						Github
+						Todos los derechos reservados ~ Juan José Navarro
 					</a>
 				</div>
 			</footer>

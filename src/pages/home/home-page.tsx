@@ -15,24 +15,25 @@ export function HomePage() {
 	});
 	if (isLoading || isError) return <Spinner />;
 	return (
-		<div className={styles.container}>
-			{data?.data.results.map((Pokemon) => (
-				<PokemonCard key={Pokemon.url} url={Pokemon.url} />
-			))}
+		<>
+			<div className={styles.container}>
+				{data?.data.results.map((Pokemon) => (
+					<PokemonCard key={Pokemon.url} url={Pokemon.url} />
+				))}
+			</div>
 			{data && (
 				<Paginate
+					actualPage={page}
 					next={data?.data.next}
 					previous={data?.data.previous}
 					nextPage={() => {
-						console.log(page);
 						setPage((prev) => prev + 1);
 					}}
 					previousPage={() => {
-						console.log(page);
 						setPage((prev) => prev - 1);
 					}}
 				/>
 			)}
-		</div>
+		</>
 	);
 }
