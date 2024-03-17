@@ -6,7 +6,7 @@ export function AcordionInfo({
 	pokemon,
 }: Readonly<{ pokemon: PokemonDetail }>) {
 	return (
-		<Acordion label="Información">
+		<Acordion label="Información" open>
 			<div className={styles.container}>
 				<p>
 					<b>Nombre:</b> {pokemon.name}

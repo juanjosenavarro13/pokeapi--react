@@ -11,8 +11,10 @@ export function AcordionHability({
 			<ul style={{ textAlign: "center", listStyle: "none" }}>
 				{abilities.map((ability) => (
 					<li key={ability.slot}>
-						<b>slot {ability.slot}:</b> {ability.ability.name} [
-						{ability.is_hidden ? "Visible" : "Invisible"}]
+						<p>
+							<b>slot {ability.slot}:</b> {ability.ability.name} [
+							{ability.is_hidden ? "Visible" : "Invisible"}]
+						</p>
 					</li>
 				))}
 			</ul>
